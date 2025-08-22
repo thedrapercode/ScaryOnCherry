@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scary On Cherry — Free Halloween Event | Kenton, Ohio</title>
+  <meta name="description" content="Free Halloween event in Kenton, Ohio featuring a music-synced house light show, projection mapping, a family walkthrough, graveyard photo ops, and a nightmare-themed haunted house." />
+  <meta property="og:title" content="Scary On Cherry — Free Halloween Event" />
+  <meta property="og:description" content="Light show, projection mapping, family walkthrough, graveyard, and haunted house. Free!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Scary+On+Cherry" />
+  <meta name="theme-color" content="#0b0b14" />
+  <style>
+    :root{
+      --bg:#0b0b14;            /* primary background */
+      --bg2:#101020;           /* secondary background */
+      --panel:#12122a;         /* panels */
+      --panel-2:#171737;       /* deeper panels */
+      --text:#f4f4ff;          /* primary text */
+      --muted:#c9c9eb;         /* muted text */
+      --accent:#9e99ff;        /* accent */
+      --accent-2:#6f6ae6;      /* accent hover */
+      --ok:#35c56b;            /* success */
+      --warn:#f3b63f;          /* warning */
+      --bad:#e06868;           /* alert */
+      --chip:#1c1c3a;          /* chips */
+      --border:#26264a;        /* subtle borders */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,sans-serif;line-height:1.5}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{color:var(--accent-2)}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--chip);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
+    .btn:hover{background:var(--panel)}
+    .btn.primary{background:var(--accent);color:#000;border-color:transparent;font-weight:700}
+    .btn.primary:hover{background:var(--accent-2);color:#fff}
+    .tag{display:inline-flex;align-items:center;gap:.35rem;padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--border);font-size:.9rem;color:var(--muted)}
+    .grid{display:grid;gap:16px}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:900px){.two,.three{grid-template-columns:1fr}}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
+    h1,h2,h3{line-height:1.2;margin:0 0 8px}
+    h1{font-size:clamp(28px,5vw,56px)}
+    h2{font-size:clamp(22px,3vw,30px)}
+    h3{font-size:clamp(18px,2.4vw,22px)}
+    ul{margin:0 0 0 18px;padding:0}
+    .visually-hidden{position:absolute !important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}
+
+    /* Sticky Status Banner */
+    #statusBanner{position:sticky;top:0;z-index:50;display:none;background:#2b1b1b;border-bottom:1px solid #443;padding:10px 16px}
+    #statusBanner.is-visible{display:block}
+    #statusBanner .close{float:right;background:none;border:0;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero .media{position:absolute;inset:0;background:url('https://via.placeholder.com/1600x900.png?text=Scary+On+Cherry+Hero') center/cover no-repeat;filter:brightness(.45)}
+    .hero .overlay{position:relative;padding:90px 0}
+    .hero .buttons{display:flex;gap:10px;flex-wrap:wrap}
+    .pill-switch{display:inline-flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--chip)}
+    .pill-switch button{all:unset;padding:8px 14px;cursor:pointer;color:var(--muted)}
+    .pill-switch button.active{background:var(--accent);color:#000}
+    #countdown{font-family:ui-monospace,Consolas,Monaco,monospace;font-weight:800;font-size:clamp(22px,4vw,42px)}
+
+    /* Date Chips */
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:var(--chip);border:1px solid var(--border);border-radius:10px;padding:8px 12px;cursor:pointer}
+    .chip.active{outline:2px solid var(--accent)}
+    .chip small{display:block;color:var(--muted);margin-top:2px}
+    .schedule-panel{background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);padding:12px}
+
+    /* Experiences */
+    .experience{display:flex;flex-direction:column;gap:8px}
+    .meter{display:flex;gap:4px}
+    .meter span{filter:grayscale(1);opacity:.35;font-size:20px}
+    .meter span.on{filter:none;opacity:1}
+    details.tip{border-top:1px dashed var(--border);padding-top:8px;margin-top:4px}
+
+    /* Gallery Carousel */
+    .carousel{display:flex;gap:12px;overflow:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+    .carousel img{width:360px;height:auto;border-radius:12px;scroll-snap-align:center;border:1px solid var(--border)}
+    .carousel-ctrls{display:flex;gap:8px;margin-top:8px}
+
+    /* Plan visit */
+    iframe.map{width:100%;height:300px;border:0;border-radius:12px}
+
+    /* Footer */
+    footer{padding:30px 0;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- Sticky Weather/Status Banner -->
+  <div id="statusBanner" role="status" aria-live="polite">
+    <span id="statusText"><strong>Weather Watch:</strong> Light rain expected — shows may start late.</span>
+    <button class="close" aria-label="Dismiss" onclick="this.parentNode.remove()">✕</button>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="media" aria-hidden="true"></div>
+    <div class="overlay">
+      <div class="container">
+        <div class="tag">🎃 Free • Kenton, Ohio</div>
+        <h1>Scary On Cherry</h1>
+        <p class="muted">Music-synced light show • Projection mapping • Family walkthrough & graveyard • Nightmare haunted house</p>
+        <div id="countdown" aria-live="polite">00d : 00h : 00m : 00s</div>
+        <div style="height:12px"></div>
+        <div class="pill-switch" role="tablist" aria-label="Scare level">
+          <button id="modeAll" class="active" role="tab" aria-selected="true">All</button>
+          <button id="modeFamily" role="tab" aria-selected="false">Family Fun</button>
+          <button id="modeNightmare" role="tab" aria-selected="false">Nightmare Mode</button>
+        </div>
+        <div style="height:12px"></div>
+        <div class="buttons">
+          <a class="btn primary" href="#schedule">View Dates</a>
+          <a class="btn" href="https://www.google.com/maps?q=Kenton%2C%20Ohio" target="_blank" rel="noopener">Directions ↗</a>
+          <a class="btn" href="#subscribe">Get Updates</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TONIGHT / DATES -->
+  <section id="schedule" class="container">
+    <h2>October Dates</h2>
+    <p class="muted">Tap a date for details, times, and calendar options.</p>
+    <div class="chips" id="dateChips">
+      <!-- Example chips (Fri/Sat in October 2025). Update as needed. -->
+      <button class="chip" data-date="2025-10-03" data-start="19:00" data-end="22:00">Fri Oct 3<small>7:00–10:00 PM</small></button>
+      <button class="chip" data-date="2025-10-04" data-start="19:00" data-end="22:00">Sat Oct 4<small>7:00–10:00 PM</small></button>
+      <button class="chip" data-date="2025-10-10" data-start="19:00" data-end="22:00">Fri Oct 10<small>7:00–10:00 PM</small></button>
+      <button class="chip" data-date="2025-10-11" data-start="19:00" data-end="22:00">Sat Oct 11<small>7:00–10:00 PM</small></button>
+      <button class="chip" data-date="2025-10-17" data-start="19:00" data-end="22:00">Fri Oct 17<small>7:00–10:00 PM</small></button>
+      <button class="chip" data-date="2025-10-18" data-start="19:00" data-end="22:00">Sat Oct 18<small>7:00–10:00 PM</small></button>
+      <button class="chip" data-date="2025-10-24" data-start="19:00" data-end="22:00">Fri Oct 24<small>7:00–10:00 PM</small></button>
+      <button class="chip" data-date="2025-10-25" data-start="19:00" data-end="22:00">Sat Oct 25<small>7:00–10:00 PM</small></button>
+      <!-- If needed, you can also add Fri Oct 31: <button class="chip" data-date="2025-10-31" data-start="19:00" data-end="22:00">Fri Oct 31<small>7:00–10:00 PM</small></button> -->
+    </div>
+    <div id="schedulePanel" class="schedule-panel" hidden>
+      <div id="scheduleSummary" class="muted">Select a date to see details.</div>
+      <div style="height:8px"></div>
+      <div class="buttons">
+        <a id="gcalLink" class="btn primary" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
+        <a id="icsLink" class="btn" href="#">Download .ics</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section id="experiences" class="container">
+    <h2>Experiences</h2>
+    <div class="grid two">
+      <article class="card experience" data-scare="both">
+        <h3>🎵 House Light Show & Projection Mapping</h3>
+        <div class="meter" aria-label="Scare meter" title="Scare meter">
+          <span class="on">👻</span><span class="on">👻</span><span>👻</span><span>👻</span><span>👻</span>
+        </div>
+        <p class="muted">Music-synced lights with projection-mapped songs and movie scenes.</p>
+        <details class="tip"><summary>Pro tip</summary><div>Best curbside view straight across from the house. Arrive 10 minutes early.</div></details>
+      </article>
+      <article class="card experience" data-scare="family">
+        <h3>🕷️ Family Walkthrough</h3>
+        <div class="meter" aria-label="Scare meter" title="Scare meter">
+          <span class="on">👻</span><span class="on">👻</span><span>👻</span><span>👻</span><span>👻</span>
+        </div>
+        <p class="muted">Spiders, Haunted Mansion singing busts, and AtmosFX pumpkin singers.</p>
+        <details class="tip"><summary>Pro tip</summary><div>Great for kids. Flat yard paths; ask volunteers for quiet route.</div></details>
+      </article>
+      <article class="card experience" data-scare="family">
+        <h3>🪦 Graveyard Photo Ops</h3>
+        <div class="meter" aria-label="Scare meter" title="Scare meter">
+          <span class="on">👻</span><span class="on">👻</span><span class="on">👻</span><span>👻</span><span>👻</span>
+        </div>
+        <p class="muted">Ground breakers, friendly skeletons, and plenty of cameras-out moments.</p>
+        <details class="tip"><summary>Pro tip</summary><div>Visit right after the light show starts to avoid lines.</div></details>
+      </article>
+      <article class="card experience" data-scare="nightmare">
+        <h3>😱 Haunted House: Nightmares</h3>
+        <div class="meter" aria-label="Scare meter" title="Scare meter">
+          <span class="on">👻</span><span class="on">👻</span><span class="on">👻</span><span class="on">👻</span><span class="on">👻</span>
+        </div>
+        <p class="muted">Grim Reapers, Freddy Krueger, giant troll, werewolves, dragons, clowns (incl. Pennywise), and Billy from SAW.</p>
+        <details class="tip"><summary>Pro tip</summary><div>May include fog, strobe, and jump-scares. Not recommended for small children.</div></details>
+      </article>
+    </div>
+  </section>
+
+  <!-- WHO YOU'LL MEET -->
+  <section id="characters" class="container">
+    <h2>Who You’ll Meet</h2>
+    <div class="grid three">
+      <article class="card" data-scare="nightmare"><h3>Freddy Krueger</h3><p class="muted">Likelihood tonight: <strong>⚡ High</strong></p></article>
+      <article class="card" data-scare="nightmare"><h3>Pennywise</h3><p class="muted">Likelihood tonight: <strong>⚡ High</strong></p></article>
+      <article class="card" data-scare="nightmare"><h3>Billy (SAW)</h3><p class="muted">Likelihood tonight: <strong>⚡ Medium</strong></p></article>
+      <article class="card" data-scare="nightmare"><h3>Giant Troll</h3><p class="muted">Likelihood tonight: <strong>⚡ High</strong></p></article>
+      <article class="card" data-scare="nightmare"><h3>Werewolves</h3><p class="muted">Likelihood tonight: <strong>⚡ Medium</strong></p></article>
+      <article class="card" data-scare="nightmare"><h3>Dragons</h3><p class="muted">Likelihood tonight: <strong>⚡ Medium</strong></p></article>
+      <article class="card" data-scare="nightmare"><h3>Grim Reapers</h3><p class="muted">Likelihood tonight: <strong>⚡ Medium</strong></p></article>
+      <article class="card" data-scare="both"><h3>Clowns</h3><p class="muted">Likelihood tonight: <strong>⚡ Medium</strong></p></article>
+      <article class="card" data-scare="family"><h3>Singing Pumpkins</h3><p class="muted">Likelihood tonight: <strong>⚡ High</strong></p></article>
+    </div>
+  </section>
+
+  <!-- GALLERY / SNEAK PEEKS -->
+  <section id="gallery" class="container">
+    <h2>Sneak Peeks</h2>
+    <div class="carousel" aria-label="Gallery">
+      <img src="https://via.placeholder.com/640x360.png?text=Projection+Mapping" alt="Projection mapping on the house">
+      <img src="https://via.placeholder.com/640x360.png?text=Singing+Pumpkins" alt="Singing pumpkins with projected faces">
+      <img src="https://via.placeholder.com/640x360.png?text=Giant+Troll" alt="Giant troll prop">
+      <img src="https://via.placeholder.com/640x360.png?text=Graveyard" alt="Graveyard set with ground breakers">
+    </div>
+    <div class="carousel-ctrls">
+      <button class="btn" type="button" onclick="document.querySelector('#gallery .carousel').scrollBy({left:-380,behavior:'smooth'})">⟵ Prev</button>
+      <button class="btn" type="button" onclick="document.querySelector('#gallery .carousel').scrollBy({left:380,behavior:'smooth'})">Next ⟶</button>
+    </div>
+  </section>
+
+  <!-- SOCIAL EMBEDS (replace URLs with your posts) -->
+  <section id="social" class="container">
+    <h2>See It In Action</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>TikTok</h3>
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@yourhandle/video/1234567890" data-video-id="1234567890" style="max-width:605px;min-width:325px;">
+          <section>Loading TikTok…</section>
+        </blockquote>
+      </div>
+      <div class="card">
+        <h3>Instagram</h3>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/XXXXXXXX/" style="background:#000;max-width:540px;width:100%;margin:auto;"></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN YOUR VISIT -->
+  <section id="visit" class="container">
+    <h2>Plan Your Visit</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>Good to know</h3>
+        <ul class="muted">
+          <li>Free event • Family-friendly areas + Haunted House</li>
+          <li>Select Friday & Saturday nights in October (weather permitting)</li>
+          <li>Street parking • Please be respectful of neighbors</li>
+          <li>Accessibility: sidewalk viewing; flat yard paths in Family Walkthrough</li>
+        </ul>
+        <div class="buttons" style="margin-top:10px">
+          <a class="btn" href="https://www.google.com/maps?q=Kenton%2C%20Ohio" target="_blank" rel="noopener">Open in Maps</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Map</h3>
+        <iframe class="map" src="https://www.google.com/maps?q=Kenton%2C%20Ohio&z=14&output=embed" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARE & SUBSCRIBE -->
+  <section id="share" class="container">
+    <div class="card">
+      <h2>Invite Your Friends</h2>
+      <p class="muted">#ScaryOnCherry • #OhioHaunts</p>
+      <div class="buttons">
+        <button id="shareSOC" class="btn primary" type="button">Share this event</button>
+        <a class="btn" href="#subscribe">Subscribe for Updates</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="subscribe" class="container">
+    <div class="card">
+      <h2>Get October Updates</h2>
+      <form id="subscribeForm" action="https://formspree.io/f/yourid" method="POST" onsubmit="return subscribeMsg()" style="display:flex;gap:8px;flex-wrap:wrap">
+        <label class="visually-hidden" for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="you@example.com" required style="flex:1;min-width:240px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);color:var(--text)">
+        <button class="btn" type="submit">Subscribe</button>
+      </form>
+      <p id="subscribeThanks" class="muted" style="display:none;margin-top:8px">Thanks! We'll send occasional October updates and any weather notices.</p>
+    </div>
+  </section>
+
+  <!-- SUPPORT CTA -->
+  <section id="support" class="container">
+    <div class="card">
+      <h2>Support the Show (Optional)</h2>
+      <p class="muted">Love that it’s free? Help us cover lights, speakers, and materials.</p>
+      <a class="btn" href="https://www.paypal.com/donate/?hosted_button_id=YOURID" target="_blank" rel="noopener">Chip in $3 →</a>
+    </div>
+  </section>
+
+  <footer class="container">
+    <div class="muted">© <span id="year"></span> Scary On Cherry — Draper Family Light Show • Kenton, Ohio</div>
+  </footer>
+
+  <!-- JSON-LD Event Schema (update if dates change) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Event",
+    "name":"Scary On Cherry (Free Halloween Event)",
+    "startDate":"2025-10-04T19:00:00-04:00",
+    "endDate":"2025-10-04T22:00:00-04:00",
+    "eventSchedule":{
+      "@type":"Schedule",
+      "repeatFrequency":"P1W",
+      "startDate":"2025-10-03",
+      "endDate":"2025-10-25",
+      "byDay":["http://schema.org/Friday","http://schema.org/Saturday"],
+      "startTime":"19:00",
+      "endTime":"22:00"
+    },
+    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus":"https://schema.org/EventScheduled",
+    "location":{
+      "@type":"Place",
+      "name":"Scary On Cherry",
+      "address":{
+        "@type":"PostalAddress",
+        "addressLocality":"Kenton",
+        "addressRegion":"OH",
+        "postalCode":"43326",
+        "addressCountry":"US"
+      }
+    },
+    "image":[
+      "https://via.placeholder.com/1200x675.png?text=Scary+On+Cherry+Light+Show",
+      "https://via.placeholder.com/1200x675.png?text=Family+Walkthrough"
+    ],
+    "description":"Free Halloween event in Kenton, Ohio featuring a music-synced house light show, projection mapping, a family walkthrough, graveyard, and a nightmare-themed haunted house.",
+    "isAccessibleForFree": true,
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://www.scaryoncherry.com/"},
+    "organizer": {"@type":"Organization","name":"Draper Family Light Show","url":"https://draperlightshow.com/"}
+  }
+  </script>
+
+  <!-- TikTok and Instagram embed scripts (load once) -->
+  <script async src="https://www.tiktok.com/embed.js"></script>
+  <script async src="//www.instagram.com/embed.js"></script>
+
+  <script>
+    // === Quick settings you can tweak ===
+    const STATUS_ACTIVE = false;  // set to true to show the banner
+    const STATUS_MESSAGE = '<strong>Weather Watch:</strong> Light rain expected — shows may start late.';
+
+    // For countdown: pick first date chip automatically
+    const DEFAULT_COUNTDOWN_DATE = null; // if null, uses first chip date; else set '2025-10-04T19:00:00-04:00'
+
+    // === Utilities ===
+    const $ = (s,ctx=document)=>ctx.querySelector(s);
+    const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
+
+    function fmtICSDate(d){
+      // Convert Date -> YYYYMMDDTHHMMSSZ in UTC
+      const z = new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\\d{3}Z$/,'Z');
+      return z;
+    }
+
+    function buildICS({title, description, location, startISO, endISO}){
+      const uid = 'soc-'+Math.random().toString(36).slice(2)+'@scaryoncherry';
+      const content = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Scary On Cherry//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:'+uid,
+        'DTSTAMP:'+fmtICSDate(new Date()),
+        'DTSTART:'+fmtICSDate(startISO),
+        'DTEND:'+fmtICSDate(endISO),
+        'SUMMARY:'+title,
+        'DESCRIPTION:'+description.replace(/\\n/g,'\\\\n'),
+        'LOCATION:'+location,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\\r\\n');
+      const blob = new Blob([content],{type:'text/calendar'});
+      return URL.createObjectURL(blob);
+    }
+
+    function googleCalURL({title, details, location, startISO, endISO}){
+      function f(s){return encodeURIComponent(s)}
+      function dt(s){return new Date(s).toISOString().replace(/[-:]/g,'').replace(/\.\\d{3}Z$/,'Z')}
+      return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+        + '&text='+f(title)
+        + '&details='+f(details)
+        + '&location='+f(location)
+        + '&dates='+dt(startISO)+'/'+dt(endISO);
+    }
+
+    // === Status banner ===
+    (function(){
+      const b = $('#statusBanner');
+      if(!b) return;
+      if(STATUS_ACTIVE){
+        $('#statusText').innerHTML = STATUS_MESSAGE;
+        b.classList.add('is-visible');
+      }
+    })();
+
+    // === Countdown ===
+    (function(){
+      const out = $('#countdown');
+      const chips = $$('#dateChips .chip');
+      let start = DEFAULT_COUNTDOWN_DATE ? new Date(DEFAULT_COUNTDOWN_DATE) : null;
+      if(!start && chips.length){
+        const c = chips[0];
+        start = new Date(c.dataset.date + 'T' + (c.dataset.start||'19:00') + ':00');
+      }
+      function pad(n){return n<10?('0'+n):n}
+      function tick(){
+        if(!start){ out.textContent = 'See dates below'; return; }
+        const diff = start - new Date();
+        if(diff <= 0){ out.textContent = "We're open tonight!"; return; }
+        const s = Math.floor(diff/1000);
+        const d = Math.floor(s/86400);
+        const h = Math.floor((s%86400)/3600);
+        const m = Math.floor((s%3600)/60);
+        const sec = s%60;
+        out.textContent = `${pad(d)}d : ${pad(h)}h : ${pad(m)}m : ${pad(sec)}s`;
+        setTimeout(tick,1000);
+      }
+      tick();
+    })();
+
+    // === Date chips -> Calendar links ===
+    (function(){
+      const chips = $$('#dateChips .chip');
+      const panel = $('#schedulePanel');
+      const summary = $('#scheduleSummary');
+      const gcal = $('#gcalLink');
+      const ics = $('#icsLink');
+
+      chips.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          chips.forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          const {date,start,end} = btn.dataset;
+          const startISO = date+'T'+(start||'19:00')+':00';
+          const endISO = date+'T'+(end||'22:00')+':00';
+          const title = 'Scary On Cherry – Free Halloween Event';
+          const location = 'Kenton, Ohio';
+          const details = 'Light show, projection mapping, family walkthrough, graveyard, and haunted house. Free!';
+          summary.innerHTML = `<strong>${new Date(startISO).toLocaleString([], {weekday:'short', month:'short', day:'numeric'})}</strong> · ${start||'19:00'}–${end||'22:00'} — Kenton, Ohio`;
+          gcal.href = googleCalURL({title, details, location, startISO, endISO});
+          ics.href = buildICS({title, description:details, location, startISO, endISO});
+          panel.hidden = false;
+        });
+      });
+    })();
+
+    // === Scare level filter ===
+    (function(){
+      const allBtn = $('#modeAll');
+      const famBtn = $('#modeFamily');
+      const niteBtn = $('#modeNightmare');
+      const filterables = $$('[data-scare]');
+      function setActive(btn){
+        [allBtn,famBtn,niteBtn].forEach(b=>{b.classList.toggle('active', b===btn); b.setAttribute('aria-selected', b===btn ? 'true' : 'false');});
+      }
+      function apply(mode){
+        filterables.forEach(el=>{
+          const v = el.dataset.scare;
+          const show = (mode==='all') || (mode==='family' && (v==='family'||v==='both')) || (mode==='nightmare' && (v==='nightmare'||v==='both'));
+          el.style.display = show? '' : 'none';
+        });
+      }
+      allBtn.addEventListener('click', ()=>{setActive(allBtn); apply('all');});
+      famBtn.addEventListener('click', ()=>{setActive(famBtn); apply('family');});
+      niteBtn.addEventListener('click', ()=>{setActive(niteBtn); apply('nightmare');});
+      apply('all');
+    })();
+
+    // === Web Share ===
+    (function(){
+      const btn = $('#shareSOC');
+      if(!btn) return;
+      btn.addEventListener('click', async ()=>{
+        const url = location.href;
+        const title = 'Scary On Cherry – Free Halloween Event in Kenton, Ohio';
+        const text = 'Light show, projection mapping, family walkthrough, and haunted house. Free!';
+        if(navigator.share){
+          try{ await navigator.share({title, text, url}); }catch(e){}
+        }else{
+          const u = encodeURIComponent(url), t = encodeURIComponent(title);
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${u}`,'_blank');
+        }
+      });
+    })();
+
+    // Subscribe UX
+    function subscribeMsg(){
+      const thx = document.getElementById('subscribeThanks');
+      if(thx){ thx.style.display='block'; }
+      return true; // still submit to provider
+    }
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
